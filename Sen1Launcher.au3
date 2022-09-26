@@ -205,8 +205,8 @@ $CheckboxSkipIntro = GUICtrlCreateCheckbox("Пропускать вступле�
 GUICtrlSetState($CheckboxSkipIntro, $SkipIntro = "True" ? 1 : $SkipIntro = "False" ? 4)
 $CheckboxSkipVideo = GUICtrlCreateCheckbox("Пропускать все видео", 296, 256, 150, 20, $BS_RIGHTBUTTON + $BS_RIGHT)
 GUICtrlSetState($CheckboxSkipVideo, $SkipAll = "True" ? 1 : $SkipAll = "False" ? 4)
-$CheckboxShowLauncher = GUICtrlCreateCheckbox("Показывать это окно", 296, 280, 150, 20, $BS_RIGHTBUTTON + $BS_RIGHT)
-GUICtrlSetState($CheckboxShowLauncher, $ShowLauncher = "True" ? 1 : $ShowLauncher = "False" ? 4)
+;$CheckboxShowLauncher = GUICtrlCreateCheckbox("Показывать это окно", 296, 280, 150, 20, $BS_RIGHTBUTTON + $BS_RIGHT)
+;GUICtrlSetState($CheckboxShowLauncher, $ShowLauncher = "True" ? 1 : $ShowLauncher = "False" ? 4)
 $LabelAutoSave = GUICtrlCreateLabel("Автосохранение", 248, 304, 87, 17)
 $GroupTurbo = GUICtrlCreateGroup("Турбо Режим", 240, 344, 225, 98)
 $CheckboxTurbo = GUICtrlCreateCheckbox("Включить турбо режим", 248, 360, 209, 17, $BS_RIGHTBUTTON + $BS_RIGHT)
@@ -319,9 +319,9 @@ While 1
 				Case $CheckboxSkipLogo, $CheckboxSkipIntro, $CheckboxSkipVideo
 						$iMouseMove = $iCursorPos[4]
 							_GDIPlus_GraphicsDrawImage($hGraphic, $hImage30, 467, 20)
-				Case $CheckboxShowLauncher
-						$iMouseMove = $iCursorPos[4]
-							_GDIPlus_GraphicsDrawImage($hGraphic, $hImage31, 467, 20)
+				; Case $CheckboxShowLauncher
+						; $iMouseMove = $iCursorPos[4]
+							; _GDIPlus_GraphicsDrawImage($hGraphic, $hImage31, 467, 20)
 				Case $LabelAutoSave, $ComboAutosave
 						$iMouseMove = $iCursorPos[4]
 							_GDIPlus_GraphicsDrawImage($hGraphic, $hImage32, 467, 20)
@@ -412,7 +412,7 @@ Func saveSetting()
 	$SkipIntro  = GUICtrlRead($CheckboxSkipIntro) = 4 ? False : GUICtrlRead($CheckboxSkipIntro) = 1 ? True
 	$SkipLogos  = GUICtrlRead($CheckboxSkipLogo) = 4 ? False : GUICtrlRead($CheckboxSkipLogo) = 1 ? True
 	$SkipAll = GUICtrlRead($CheckboxSkipVideo) = 4 ? False : GUICtrlRead($CheckboxSkipVideo) = 1 ? True
-	$ShowLauncher = GUICtrlRead($CheckboxShowLauncher) = 4 ? False : GUICtrlRead($CheckboxShowLauncher) = 1 ? True
+	;$ShowLauncher = GUICtrlRead($CheckboxShowLauncher) = 4 ? False : GUICtrlRead($CheckboxShowLauncher) = 1 ? True
 	$AutosaveInterval = GUICtrlRead($ComboAutosave) = "Отключить" ? 0 : GUICtrlRead($ComboAutosave) = "Раз в минуту" ? 60 : (StringSplit(GUICtrlRead($ComboAutosave), ' ')[3]) * 60
 	$TurboMode = GUICtrlRead($CheckboxTurbo) = 4 ? False : GUICtrlRead($CheckboxTurbo) = 1 ? True
 	$TurboFactorBattle = GUICtrlRead($ComboTurboBTL)
@@ -443,7 +443,7 @@ Func saveSetting()
 	FileWriteLine($iPath, '	<SkipIntro>' & $SkipIntro & '</SkipIntro>')
 	FileWriteLine($iPath, '	<SkipLogos>' & $SkipLogos & '</SkipLogos>')
 	FileWriteLine($iPath, '	<SkipAll>' & $SkipAll & '</SkipAll>')
-	FileWriteLine($iPath, '	<ShowLauncher>' & $ShowLauncher & '</ShowLauncher>')
+	FileWriteLine($iPath, '	<ShowLauncher>True</ShowLauncher>')
 	FileWriteLine($iPath, '	<AutosaveInterval>' & $AutosaveInterval & '</AutosaveInterval>')
 	FileWriteLine($iPath, '	<TurboMode>' & $TurboMode & '</TurboMode>')
 	FileWriteLine($iPath, '	<TurboFactorBattle>' & $TurboFactorBattle & '</TurboFactorBattle>')
