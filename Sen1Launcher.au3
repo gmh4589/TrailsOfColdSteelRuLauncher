@@ -345,7 +345,7 @@ While 1
 		Case $ButtonSavePlay ;"Сохр. и играть"
 			saveSetting()
 			preExit()
-			ShellExecute(@ScriptDir & "\ed8.exe")
+			ShellExecute(@ScriptDir & "\ed8.exe", " -fromlauncher")
 			Exit
 
 		Case $ButtonLow; "Низкие"
